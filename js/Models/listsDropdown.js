@@ -1,7 +1,7 @@
 import { Recette } from '../factories/Recette.js'
 import { recipes } from '../data/Data.js'
 import { searchInput } from '../algorithme/search.js'
-export function createTemplate(filter){
+export function getListOfIngredients(filter){
   let sectionRecipes = ''
   searchInput(filter).map(item => {
     const recette = new Recette(item)
@@ -41,4 +41,4 @@ export function createTemplate(filter){
     return text
   }
 }
-createTemplate('default')
+createListOfIngredient('default')

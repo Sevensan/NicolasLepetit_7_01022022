@@ -8,7 +8,6 @@ export class Recette{
     this._description = data.description
     this._appliance = data.appliance
     this._ustensils = data.ustensils
-    this.$wrapper = document.createElement("div")
   }
 
   get id(){

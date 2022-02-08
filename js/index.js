@@ -1,4 +1,4 @@
-import {recipes} from './data/Data.js'
 import {} from './Models/template.js'
-
-console.log('### recipes ### ', recipes)
+import { getListOfIngredients } from './data/ListIngredients.js'
+import { getListOfAppliance } from './data/ListAppareils.js'
+import { getListOfUstensils } from './data/ListUstensils.js'
