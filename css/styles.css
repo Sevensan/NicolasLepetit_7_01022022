@@ -35,5 +35,29 @@ p{
 }
 
 
-
 /* FIN DU GLOBAL */
+#input-ustensil-container, #input-appliance-container, #input-ingredient-container{
+  position: relative;
+}
+#listIngredients, #listAppareils, #listUstensils{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  color: white;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+#listIngredients{
+  background: blue;
+}
+#listAppareils{
+  background: green;
+}
+#listUstensils{
+  background: red;
+}
+#listIngredients p, #listAppareils p, #listUstensils p{
+  padding: 0 .5rem;
+}
