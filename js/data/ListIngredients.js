@@ -23,6 +23,5 @@ const inputIngredient = document.getElementById("input-ingredient")
 inputIngredient.addEventListener('keyup', function(){
   createDropdown(getListOfIngredients(inputIngredient.value), 'listIngredients')
   filters.ingredient = inputIngredient.value
-  console.log(filters)
   createTemplate(filters)
 })

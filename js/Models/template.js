@@ -3,7 +3,8 @@ import { searchInput } from '../algorithme/search.js'
 import { filters } from '../data/Filters.js'
 export function createTemplate(filters){
   let sectionRecipes = ''
-  searchInput(filters).map(item => {
+  console.log(searchInput(filters))
+  searchInput(filters).forEach(item => {
     const recette = new Recette(item)
     const template =
     `
@@ -19,9 +20,9 @@ export function createTemplate(filters){
         </div>
         <div class="row">
           <div class="col-6">
-            ${recette.ingredients.map(item => {
-              return `<p class="card-text">${item.ingredient}: ${item.quantity}${item.unit? item.unit : ''}</p>`
-              }).join('')}
+            ${recette.ingredients.map(item =>
+              `<p class="card-text">${item.ingredient}: ${item.quantity}${item.unit? item.unit : ''}</p>`)
+              .join('')}
           </div>
           <p class="col-6">${checkText(recette.description)}</p>
         </div>
@@ -32,13 +33,7 @@ export function createTemplate(filters){
     document.getElementById('recettes').innerHTML = sectionRecipes
   })
 }
- const checkText = (text) => {
-  const newText = null
-  if(text.length > 100){
-    let newText = text.slice(0,100) + '...'
-    return newText
-  } else{
-    return text
-  }
+const checkText = (text) => {
+  return text.length > 100 ? text.slice(0,100) + '...' : text
 }
 createTemplate(filters)

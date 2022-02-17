@@ -20,6 +20,5 @@ const inputAppliance = document.getElementById("input-appliance")
 inputAppliance.addEventListener('keyup', function(){
   createDropdown(getListOfAppliance(inputAppliance.value), 'listAppareils')
   filters.appliance = inputAppliance.value
-  console.log(filters)
   createTemplate(filters)
 })

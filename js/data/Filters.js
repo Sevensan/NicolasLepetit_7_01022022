@@ -1,6 +1,6 @@
 export let filters = {
-    global: '',
-    ingredient: '',
-    appliance: '',
-    ustensil: '',
+    global: null,
+    ingredient: null,
+    appliance: null,
+    ustensil: null,
   }
