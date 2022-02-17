@@ -20,7 +20,7 @@ export const getListOfIngredients = (filter) => {
   return listOfIngredients
 }
 const inputIngredient = document.getElementById("input-ingredient")
-inputIngredient.addEventListener('keyup', function(){
+inputIngredient.addEventListener('change', function(){
   createDropdown(getListOfIngredients(inputIngredient.value), 'listIngredients')
   filters.ingredient = inputIngredient.value
   createTemplate(filters)

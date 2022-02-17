@@ -16,9 +16,8 @@ export const getListOfUstensils = (filter) => {
   return listOfUstensils
 }
 const inputUstensils = document.getElementById("input-ustensil")
-inputUstensils.addEventListener('keyup', function(){
+inputUstensils.addEventListener('change', function(){
   createDropdown(getListOfUstensils(inputUstensils.value), 'listUstensils')
   filters.ustensil = inputUstensils.value
-  console.log(filters)
   createTemplate(filters)
 })

@@ -30,7 +30,7 @@ export const searchInput = (filters) => {
   } else{ return recipes }
 }
 const inputSearch = document.getElementById("inputSearch")
-inputSearch.addEventListener('keyup', function(event){
+inputSearch.addEventListener('change', function(event){
   filters.global = inputSearch.value
   createTemplate(filters)
 })

@@ -17,7 +17,7 @@ export const getListOfAppliance = (filter) => {
   return listOfAppliance
 }
 const inputAppliance = document.getElementById("input-appliance")
-inputAppliance.addEventListener('keyup', function(){
+inputAppliance.addEventListener('change', function(){
   createDropdown(getListOfAppliance(inputAppliance.value), 'listAppareils')
   filters.appliance = inputAppliance.value
   createTemplate(filters)
