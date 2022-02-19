@@ -4,6 +4,7 @@ import { filters } from '../data/Filters.js'
 export function createTemplate(filters){
   let sectionRecipes = ''
   console.log(searchInput(filters))
+  if(searchInput(filters).length > 0){
   searchInput(filters).forEach(item => {
     const recette = new Recette(item)
     const template =
@@ -11,12 +12,14 @@ export function createTemplate(filters){
   <div class="col-4 card">
     <div class="container">
       <div class="card-img-top">
-        <img src="https://via.placeholder.com/150">
+        <svg width="380" height="178" viewBox="0 0 380 178" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 5C0 2.23858 2.23858 0 5 0H375C377.761 0 380 2.23858 380 5V178H0V5Z" fill="#C7BEBE"/>
+        </svg>
       </div>
       <div class="card-body">
         <div class="row">
           <p class="card-title col-8">${recette.name}</p>
-          <p class="card-text col-4">${recette.time}</p>
+          <p class="card-text col-4"><i class="fa-solid fa-clock"></i> ${recette.time} min</p>
         </div>
         <div class="row">
           <div class="col-6">
@@ -32,6 +35,18 @@ export function createTemplate(filters){
     sectionRecipes += template
     document.getElementById('recettes').innerHTML = sectionRecipes
   })
+  } else{
+    document.getElementById('recettes').innerHTML = `<p class="pl-3">Aucun résultat</p>`
+  }
+  if(filters.ingredient){
+    document.getElementById("filtres-ingredient").classList.add('visible')
+  }
+  if(filters.ustensil){
+    document.getElementById("filtres-ustensil").classList.add('visible')
+  }
+  if(filters.appliance){
+    document.getElementById("filtres-appareil").classList.add('visible')
+  }
 }
 const checkText = (text) => {
   return text.length > 100 ? text.slice(0,100) + '...' : text

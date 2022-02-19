@@ -17,8 +17,14 @@ export const getListOfAppliance = (filter) => {
   return listOfAppliance
 }
 const inputAppliance = document.getElementById("input-appliance")
-inputAppliance.addEventListener('change', function(){
-  createDropdown(getListOfAppliance(inputAppliance.value), 'listAppareils')
+const arrow = document.getElementById("arrowAppliance")
+const createAppliance = () => {
   filters.appliance = inputAppliance.value
+  document.getElementById('listAppareils').classList.toggle("visible")
+  createDropdown(getListOfAppliance(inputAppliance.value), 'listAppareils')
   createTemplate(filters)
-})
+  const filtre = document.getElementById("filtres-appareil")
+  filtre.innerHTML = inputAppliance.value
+}
+inputAppliance.addEventListener('change', createAppliance)
+arrow.addEventListener('click', createAppliance)

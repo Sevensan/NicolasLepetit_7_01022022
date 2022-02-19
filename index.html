@@ -5,36 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
     <title>>Les petits plats</title>
 </head>
 <body>
   <div class="container-fluid">
-
       <header>
         <img src="./img/384ed2f7-7cfb-427b-9139-ba35fc61a95b.jpg" alt="">
         <h1>Les petits plats</h1>
       </header>
       <section id="recherche">
-        <input id="inputSearch" class="form-control" type="text">
-        <div id="filtres">
-          <p>sample</p>
+        <div class="position-relative">
+          <input id="inputSearch" placeholder="Rechercher une recette" class="form-control" type="text">
+          <i class="position-absolute fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="input-group mb-3">
+        <div id="filtres">
+          <p id="filtres-global" class="bg-secondary rounded text-white m-2">global</p>
+          <p id="filtres-ingredient" class="bg-primary rounded text-white m-2">ingredient</p>
+          <p id="filtres-appareil" class="bg-success rounded text-white m-2">appareil</p>
+          <p id="filtres-ustensil" class="bg-danger rounded text-white m-2">ustensile</p>
+        </div>
+        <div class="input-group mb-3 inputsContainer mt-3">
           <!-- INPUT INGREDIENTS -->
-          <div id="input-ingredient-container">
-            <input id="input-ingredient" type="text" class="form-control" placeholder="ingrédients">
-            <div id="listIngredients"></div>
+          <div id="input-ingredient-container" class="d-flex justify-content-center align-items-center mr-2">
+            <input id="input-ingredient" type="text" class="form-control bg-primary text-white" placeholder="ingrédients"><span id="arrowIngredient" class="arrowDown text-white p-1 bg-primary"><i class="fa-solid fa-angle-down"></i></span>
+            <div id="listIngredients" class="rounded bg-primary"></div>
           </div>
           <!-- INPUT APPAREILS -->
-          <div id="input-appliance-container">
-            <input id="input-appliance" type="text" class="form-control" placeholder="appareils">
-            <div id="listAppareils"></div>
+          <div id="input-appliance-container" class="d-flex justify-content-center align-items-center mr-2">
+            <input id="input-appliance" type="text" class="form-control bg-success text-white" placeholder="appareils"><span id="arrowAppliance" class="arrowDown text-white p-1 bg-success"><i class="fa-solid fa-angle-down"></i></span>
+            <div id="listAppareils" class="rounded bg-success"></div>
           </div>
           <!-- INPUT USTENSILS -->
-          <div id="input-ustensil-container">
-            <input id="input-ustensil" type="text" class="form-control" placeholder="ustensiles">
-            <div id="listUstensils"></div>
+          <div id="input-ustensil-container" class="d-flex justify-content-center align-items-center mr-2">
+            <input id="input-ustensil" type="text" class="form-control bg-danger text-white" placeholder="ustensiles"><span id="arrowUstensil" class="arrowDown text-white p-1 bg-danger"><i class="fa-solid fa-angle-down"></i></span>
+            <div id="listUstensils" class="rounded bg-danger"></div>
           </div>
         </div>
       </section>
@@ -47,5 +53,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script type="module" src="js/index.js"></script>
+  <script>
+    function setNewValue(val){
+  console.log('newVal : ',val)
+}
+  </script>
 </body>
 </html>

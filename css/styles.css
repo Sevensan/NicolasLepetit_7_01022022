@@ -10,14 +10,27 @@ p{
 /* FIN DU RESET */
 
 /* GLOBAL */
-.card-img-top img{
+body{
+  background-color: #F7F7F7;
+}
+h1{
+  color: #D04F4F;
+}
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-img-top svg{
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover !important;
   border-radius: 20px 20px 0 0 !important;
 }
 .card{
   border: none !important;
+  background-color: #F7F7F7;
   margin: 10px 0;
 }
 .card p{
@@ -49,15 +62,45 @@ p{
   display: flex;
   flex-wrap: wrap;
 }
-#listIngredients{
-  background: blue;
-}
-#listAppareils{
-  background: green;
-}
-#listUstensils{
-  background: red;
+#listIngredients, #listAppareils, #listUstensils{
+
 }
 #listIngredients p, #listAppareils p, #listUstensils p{
   padding: 0 .5rem;
+}
+
+#listUstensils, #listAppareils, #listIngredients{
+  display: none;
+}
+.visible{
+  display: flex !important;
+}
+
+/* INPUT */
+#filtres{
+  display: flex;
+}
+#filtres p{
+  padding: 0.5rem;
+}
+#filtres-global, #filtres-ingredient, #filtres-appareil, #filtres-ustensil{
+  display: none;
+}
+#inputSearch{
+  background-color: lightgray;
+}
+.inputsContainer input{
+  border: none;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.inputsContainer input::placeholder{
+  color: white !important;
+}
+.arrowDown{
+  border-radius: 0 0.25rem 0.25rem 0;
+  height: 100%;
+}
+.fa-magnifying-glass{
+  top: 10px;
+  right: 10px;
 }

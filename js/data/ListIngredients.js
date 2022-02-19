@@ -20,8 +20,14 @@ export const getListOfIngredients = (filter) => {
   return listOfIngredients
 }
 const inputIngredient = document.getElementById("input-ingredient")
-inputIngredient.addEventListener('change', function(){
-  createDropdown(getListOfIngredients(inputIngredient.value), 'listIngredients')
+const arrow = document.getElementById("arrowIngredient")
+const createIngredients = () => {
   filters.ingredient = inputIngredient.value
+  document.getElementById('listIngredients').classList.toggle("visible")
+  createDropdown(getListOfIngredients(inputIngredient.value), 'listIngredients')
   createTemplate(filters)
-})
+  const filtre = document.getElementById("filtres-ingredient")
+  filtre.innerHTML = inputIngredient.value
+}
+inputIngredient.addEventListener('change', createIngredients)
+arrow.addEventListener('click', createIngredients)

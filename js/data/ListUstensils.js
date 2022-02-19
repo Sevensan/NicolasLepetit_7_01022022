@@ -16,8 +16,14 @@ export const getListOfUstensils = (filter) => {
   return listOfUstensils
 }
 const inputUstensils = document.getElementById("input-ustensil")
-inputUstensils.addEventListener('change', function(){
-  createDropdown(getListOfUstensils(inputUstensils.value), 'listUstensils')
+const arrow = document.getElementById("arrowUstensil")
+const createUstensil = () => {
   filters.ustensil = inputUstensils.value
+  document.getElementById('listUstensils').classList.toggle("visible")
+  createDropdown(getListOfUstensils(inputUstensils.value), 'listUstensils')
   createTemplate(filters)
-})
+  const filtre = document.getElementById("filtres-ustensil")
+  filtre.innerHTML = inputUstensils.value
+}
+inputUstensils.addEventListener('change', createUstensil)
+arrow.addEventListener('click', createUstensil)
