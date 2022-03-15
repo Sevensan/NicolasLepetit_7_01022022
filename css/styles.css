@@ -82,6 +82,14 @@ header{
 }
 #filtres p{
   padding: 0.5rem;
+  margin: 0;
+}
+.fa-circle-xmark{
+  padding-right: .5rem;
+}
+.filtre{
+  justify-content: center;
+  align-items: center;
 }
 #filtres-ingredient,.filtres-ingredient-container, #filtres-appareil, .filtres-appareil-container, #filtres-ustensil, .filtres-ustensil-container{
   display: none;
