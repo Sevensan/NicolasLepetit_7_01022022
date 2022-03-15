@@ -83,7 +83,7 @@ header{
 #filtres p{
   padding: 0.5rem;
 }
-#filtres-global, #filtres-ingredient, #filtres-appareil, #filtres-ustensil{
+#filtres-ingredient,.filtres-ingredient-container, #filtres-appareil, .filtres-appareil-container, #filtres-ustensil, .filtres-ustensil-container{
   display: none;
 }
 #inputSearch{

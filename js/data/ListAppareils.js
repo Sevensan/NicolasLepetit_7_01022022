@@ -1,5 +1,5 @@
 import { recipes } from "./Data.js"
-import {createDropdown} from '../Models/listsDropdown.js'
+import {createDropdown, setNewValue} from '../Models/listsDropdown.js'
 import { filters } from "./Filters.js"
 import { createTemplate } from "../Models/template.js"
 export const getListOfAppliance = (filter) => {
@@ -25,6 +25,12 @@ const createAppliance = () => {
   createTemplate(filters)
   const filtre = document.getElementById("filtres-appareil")
   filtre.innerHTML = inputAppliance.value
+  const list =
+  document.querySelectorAll("#listAppareils .CLIQUEMOIDESSUS")
+  for(let i = 0; i <list.length; i++){
+    console.log(list[i])
+    list[i].addEventListener('click', ()=>{setNewValue(`${list[i].innerHTML}`, 'appareil')})
+  }
 }
 inputAppliance.addEventListener('change', createAppliance)
 arrow.addEventListener('click', createAppliance)

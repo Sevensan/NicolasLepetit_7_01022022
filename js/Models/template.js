@@ -3,7 +3,7 @@ import { searchInput } from '../algorithme/search.js'
 import { filters } from '../data/Filters.js'
 export function createTemplate(filters){
   let sectionRecipes = ''
-  console.log(searchInput(filters))
+  // console.log(searchInput(filters))
   if(searchInput(filters).length > 0){
   searchInput(filters).forEach(item => {
     const recette = new Recette(item)
@@ -38,14 +38,49 @@ export function createTemplate(filters){
   } else{
     document.getElementById('recettes').innerHTML = `<p class="pl-3">Aucun résultat</p>`
   }
+  const showIt = (elem) => {
+    if(elem.classList){
+      elem.classList.add("visible")
+      console.log(elem)
+    }
+  }
+  const removeIt = (elem) => {
+    if(elem.classList){
+      elem.classList.remove("visible")
+    }
+  }
+  // ustensils
+  const ustensilContainer = document.querySelector('.filtres-ustensil-container')
+  const ustensil = document.getElementById("filtres-ustensil")
+  //ingredient
+  const ingredientContainer = document.querySelector('.filtres-ingredient-container')
+  const ingredient = document.getElementById("filtres-ingredient")
+  //appareils
+  const appareilContainer = document.querySelector('.filtres-appareil-container')
+  const appareil = document.getElementById("filtres-appareil")
+  // si les filtres sont vides, on ne les affiche pas
   if(filters.ingredient){
-    document.getElementById("filtres-ingredient").classList.add('visible')
+    showIt(ingredientContainer)
+    showIt(ingredient)
+  } else{
+    removeIt(ingredient)
+    removeIt(ingredientContainer)
   }
   if(filters.ustensil){
-    document.getElementById("filtres-ustensil").classList.add('visible')
+    console.log("IL YA UN USTENSIL LA")
+    showIt(ustensilContainer)
+    showIt(ustensil)
+  } else{
+    removeIt(ustensil)
+    removeIt(ustensilContainer)
   }
   if(filters.appliance){
-    document.getElementById("filtres-appareil").classList.add('visible')
+    showIt(appareilContainer)
+    showIt(appareil)
+  }
+  else{
+    removeIt(appareil)
+    removeIt(appareilContainer)
   }
 }
 const checkText = (text) => {
