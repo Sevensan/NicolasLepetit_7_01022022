@@ -5,10 +5,10 @@ export function createTemplate(filters){
   let sectionRecipes = ''
   // console.log(searchInput(filters))
   if(searchInput(filters).length > 0){
-  searchInput(filters).forEach(item => {
-    const recette = new Recette(item)
-    const template =
-    `
+    searchInput(filters).forEach(item => {
+      const recette = new Recette(item)
+      const template =
+      `
   <div class="col-4 card">
     <div class="container">
       <div class="card-img-top">

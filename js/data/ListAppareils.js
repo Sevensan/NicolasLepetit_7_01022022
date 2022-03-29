@@ -2,35 +2,49 @@ import { recipes } from "./Data.js"
 import {createDropdown, setNewValue} from '../Models/listsDropdown.js'
 import { filters } from "./Filters.js"
 import { createTemplate } from "../Models/template.js"
-export const getListOfAppliance = (filter) => {
-  if(!filter){
-    filter = ''
-  }
+let isOpen = false
+export const getListOfAppliance = (val) => {
+  !val ? val = '' : val
   let listOfAppliance = []
-  recipes.map(recipe => {
+  recipes.forEach( recipe => {
     if(!listOfAppliance.includes(recipe.appliance.toLowerCase())){
-      if(recipe.appliance.toLocaleLowerCase().includes(filter)){
+      if(recipe.appliance.toLowerCase().includes(val)){
         listOfAppliance.push(recipe.appliance.toLowerCase())
       }
     }
   })
-  return listOfAppliance
+  return listOfAppliance.filter(item => item.includes(val))
 }
 const inputAppliance = document.getElementById("input-appliance")
 const arrow = document.getElementById("arrowAppliance")
-const createAppliance = () => {
-  filters.appliance = inputAppliance.value
-  document.getElementById('listAppareils').classList.toggle("visible")
-  createDropdown(getListOfAppliance(inputAppliance.value), 'listAppareils')
+
+const createAppliance = (filter) => {
+  filters.appliance = filter
+  const listAppliance = document.getElementById('listAppareils')
+  !isOpen ? listAppliance.classList.add("visible") : listAppliance.classList.remove(("visible"))
+  createDropdown(getListOfAppliance(filter), 'listAppareils')
   createTemplate(filters)
   const filtre = document.getElementById("filtres-appareil")
-  filtre.innerHTML = inputAppliance.value
+  filtre.innerHTML = filter
   const list =
   document.querySelectorAll("#listAppareils .CLIQUEMOIDESSUS")
   for(let i = 0; i <list.length; i++){
-    console.log(list[i])
-    list[i].addEventListener('click', ()=>{setNewValue(`${list[i].innerHTML}`, 'appareil')})
+    list[i].addEventListener('click', ()=>{
+      setNewValue(`${list[i].innerHTML}`, 'appareil')
+      createAppliance(inputAppliance.value)
+      isOpen = !isOpen
+    })
   }
 }
-inputAppliance.addEventListener('change', createAppliance)
-arrow.addEventListener('click', createAppliance)
+inputAppliance.addEventListener('change',()=>{
+   createAppliance(inputAppliance.value)
+   isOpen = !isOpen
+  })
+inputAppliance.addEventListener('keyup',()=>{
+  isOpen = false
+  createAppliance(inputAppliance.value)
+})
+arrow.addEventListener('click', ()=>{
+  createAppliance(inputAppliance.value)
+  isOpen = !isOpen
+})

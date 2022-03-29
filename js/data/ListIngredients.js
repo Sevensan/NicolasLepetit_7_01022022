@@ -2,10 +2,9 @@ import { recipes } from "./Data.js"
 import {createDropdown, setNewValue} from '../Models/listsDropdown.js'
 import { createTemplate } from "../Models/template.js"
 import {filters} from '../data/Filters.js'
+let isOpen = false
 export const getListOfIngredients = (filter) => {
-  if(!filter){
-    filter = ''
-  }
+  !filter ? filter = '' : filter
   let listOfIngredients = []
   recipes.forEach(recipe => {
     recipe.ingredients.forEach(ingredient => {
@@ -17,23 +16,38 @@ export const getListOfIngredients = (filter) => {
       }
     })
   })
-  return listOfIngredients
+  return listOfIngredients.filter(item => item.includes(filter))
 }
 const inputIngredient = document.getElementById("input-ingredient")
 const arrow = document.getElementById("arrowIngredient")
-const createIngredients = () => {
-  filters.ingredient = inputIngredient.value
-  document.getElementById('listIngredients').classList.toggle("visible")
-  createDropdown(getListOfIngredients(inputIngredient.value), 'listIngredients')
+
+const createIngredients = (filter) => {
+  filters.ingredient = filter
+  const listIngredients = document.getElementById('listIngredients')
+  !isOpen ? listIngredients.classList.add("visible") : listIngredients.classList.remove(("visible"))
+  createDropdown(getListOfIngredients(filter), 'listIngredients')
   createTemplate(filters)
   const filtre = document.getElementById("filtres-ingredient")
-  filtre.innerHTML = inputIngredient.value
+  filtre.innerHTML = filter
   const list =
   document.querySelectorAll("#listIngredients .CLIQUEMOIDESSUS")
   for(let i = 0; i <list.length; i++){
-    console.log(list[i])
-    list[i].addEventListener('click', ()=>{setNewValue(`${list[i].innerHTML}`, 'ingredient')})
+    list[i].addEventListener('click', ()=>{
+      setNewValue(`${list[i].innerHTML}`, 'ingredient')
+      createIngredients(inputIngredient.value)
+      isOpen = !isOpen
+    })
   }
 }
-inputIngredient.addEventListener('change', createIngredients)
-arrow.addEventListener('click', createIngredients)
+inputIngredient.addEventListener('change',()=>{
+  createIngredients(inputIngredient.value)
+  isOpen = !isOpen
+ })
+inputIngredient.addEventListener('keyup',()=>{
+ isOpen = false
+ createIngredients(inputIngredient.value)
+})
+arrow.addEventListener('click', ()=>{
+ createIngredients(inputIngredient.value)
+ isOpen = !isOpen
+})
