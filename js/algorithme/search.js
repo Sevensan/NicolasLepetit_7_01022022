@@ -13,7 +13,7 @@ export const searchInput = (filters) => {
           }
         }
         result = applianceArr
-      }
+    }
     // filtre ustensil
     if ( filters.ustensil) {
       for (let i = 0; i < result.length; i++) {
