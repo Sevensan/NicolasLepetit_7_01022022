@@ -4,25 +4,7 @@ import { filters } from '../data/Filters.js'
 export const searchInput = (filters) => {
   if(filters.global || filters.ingredient || filters.ustensil || filters.appliance){
     let result = recipes
-
-  // filtre appliance
-    for (let i = 0; i < result.length; i++) {
-      result[i].ustensilList = ''
-      for (let j = 0; j < result[i].ustensils.length; j++) {
-        result[i].ustensilList += result[i].ustensils[j].toLowerCase()
-      }
-    }
-    for (let i = 0; i < result.length; i++ ) {
-      result[i].listOfIngredients = []
-      for(let j = 0; j < result[i].ingredients.length; j++) {
-        result[i].listOfIngredients += result[i].ingredients[j].ingredient
-      }
-    }
-    for (let i = 0; i < result.length; i++) {
-      result[i].nameAndDescription = result[i].name.toLowerCase() + ' ' + result[i].description.toLowerCase()
-    }
-
-    console.log('result after for loop initiating fields',result)
+    // filtre appliance
     if (filters.appliance) {
       let applianceArr = []
       for (let i = 0; i < result.length; i++) {
@@ -32,11 +14,14 @@ export const searchInput = (filters) => {
         }
         result = applianceArr
       }
-    console.log('result after filter appliance : ', result)
-
-      // filtre ustensil
-
+    // filtre ustensil
     if ( filters.ustensil) {
+      for (let i = 0; i < result.length; i++) {
+        result[i].ustensilList = ''
+        for (let j = 0; j < result[i].ustensils.length; j++) {
+          result[i].ustensilList += result[i].ustensils[j].toLowerCase()
+        }
+      }
       let ustensilArr = []
       for (let i = 0; i < result.length; i++) {
           if ( result[i].ustensilList.includes(filters.ustensil) ) {
@@ -45,11 +30,11 @@ export const searchInput = (filters) => {
       }
       result = ustensilArr
     }
-    console.log('result after filtering ustensils : ', result)
-
-
     // filtre global
     if(filters.global) {
+      for (let i = 0; i < result.length; i++) {
+        result[i].nameAndDescription = result[i].name.toLowerCase() + ' ' + result[i].description.toLowerCase()
+      }
       let globalArr = []
       for (let i = 0; i < result.length; i++) {
         if ( result[i].nameAndDescription.includes(filters.global) ) {
@@ -58,10 +43,14 @@ export const searchInput = (filters) => {
       }
       result = globalArr
     }
-    console.log('result filtered after global', result)
-
     // filtre ingredient
     if (filters.ingredient) {
+      for (let i = 0; i < result.length; i++ ) {
+        result[i].listOfIngredients = []
+        for(let j = 0; j < result[i].ingredients.length; j++) {
+          result[i].listOfIngredients += result[i].ingredients[j].ingredient
+        }
+      }
       let ingredientArr = []
       for (let i = 0; i < result.length; i++) {
         if (result[i].listOfIngredients.toLowerCase().includes(filters.ingredient.toLowerCase())) {
@@ -70,9 +59,7 @@ export const searchInput = (filters) => {
       }
       result = ingredientArr
     }
-
-  console.log('final result',result)
-  return result
+    return result
   } else{ return recipes }
 }
 const inputSearch = document.getElementById("inputSearch")
