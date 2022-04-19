@@ -67,7 +67,6 @@ export function createTemplate(filters){
     removeIt(ingredientContainer)
   }
   if(filters.ustensil){
-    console.log("IL YA UN USTENSIL LA")
     showIt(ustensilContainer)
     showIt(ustensil)
   } else{

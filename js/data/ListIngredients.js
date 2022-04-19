@@ -30,7 +30,7 @@ const createIngredients = (filter) => {
   const filtre = document.getElementById("filtres-ingredient")
   filtre.innerHTML = filter
   const list =
-  document.querySelectorAll("#listIngredients .CLIQUEMOIDESSUS")
+  document.querySelectorAll("#listIngredients .showlist")
   for(let i = 0; i <list.length; i++){
     list[i].addEventListener('click', ()=>{
       setNewValue(`${list[i].innerHTML}`, 'ingredient')
