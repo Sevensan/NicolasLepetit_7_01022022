@@ -27,7 +27,7 @@ const createAppliance = (filter) => {
   const filtre = document.getElementById("filtres-appareil")
   filtre.innerHTML = filter
   const list =
-  document.querySelectorAll("#listAppareils .CLIQUEMOIDESSUS")
+  document.querySelectorAll("#listAppareils .showlist")
   for(let i = 0; i <list.length; i++){
     list[i].addEventListener('click', ()=>{
       setNewValue(`${list[i].innerHTML}`, 'appareil')

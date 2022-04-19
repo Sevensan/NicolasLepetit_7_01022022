@@ -3,7 +3,6 @@ import { searchInput } from '../algorithme/search.js'
 import { filters } from '../data/Filters.js'
 export function createTemplate(filters){
   let sectionRecipes = ''
-  // console.log(searchInput(filters))
   if(searchInput(filters).length > 0){
     searchInput(filters).forEach(item => {
       const recette = new Recette(item)
@@ -41,7 +40,6 @@ export function createTemplate(filters){
   const showIt = (elem) => {
     if(elem.classList){
       elem.classList.add("visible")
-      console.log(elem)
     }
   }
   const removeIt = (elem) => {
@@ -67,7 +65,6 @@ export function createTemplate(filters){
     removeIt(ingredientContainer)
   }
   if(filters.ustensil){
-    console.log("IL YA UN USTENSIL LA")
     showIt(ustensilContainer)
     showIt(ustensil)
   } else{

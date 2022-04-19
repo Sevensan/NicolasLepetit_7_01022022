@@ -29,7 +29,7 @@ const createUstensil = (filter) => {
   const filtre = document.getElementById("filtres-ustensil")
   filtre.innerHTML = filter
   const list =
-  document.querySelectorAll("#listUstensils .CLIQUEMOIDESSUS")
+  document.querySelectorAll("#listUstensils .showlist")
   for(let i = 0; i <list.length; i++){
     list[i].addEventListener('click', ()=>{
       setNewValue(`${list[i].innerHTML}`, 'ustensil')

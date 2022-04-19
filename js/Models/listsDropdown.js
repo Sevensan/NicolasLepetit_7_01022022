@@ -2,7 +2,7 @@ export function createDropdown(list,id){
   let sectionDropdown = ''
   list.forEach(item => {
     const template =
-    `<p class="CLIQUEMOIDESSUS card-text" id="item-${item.replaceAll(' ','-')}">${item}</p>`
+    `<p class="showlist card-text" id="item-${item.replaceAll(' ','-')}">${item}</p>`
     sectionDropdown += template
     document.getElementById(id).innerHTML = sectionDropdown
   })
